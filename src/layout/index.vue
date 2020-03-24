@@ -7,7 +7,7 @@
         <navbar />
         <!-- <tags-view v-if="needTagsView" /> -->
       </div>
-      <app-main class="p10" />
+      <app-main class="pl10 pr10 boxSizing" />
     </div>
   </div>
 </template>
