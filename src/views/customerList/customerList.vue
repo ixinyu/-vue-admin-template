@@ -11,7 +11,7 @@
     >
       <el-button slot="reference">click 激活</el-button>
     </el-popover>
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form :inline="true" :model="formInline" class="demo-form-inline mt20">
       <el-form-item label="审批人">
         <el-input v-model="formInline.user" placeholder="审批人" />
       </el-form-item>

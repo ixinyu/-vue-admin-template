@@ -1,15 +1,6 @@
 # vue-admin-template
-
-English | [简体中文](./README-zh.md)
-
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
-
-**Live demo:** http://panjiachen.github.io/vue-admin-template
-
-
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
-
-## Build Setup
+用vue-admin-template 搭建后台系统，
+权限管理，主要同过permission,结合vue-element-admin 观察，一步步的看，即可调出权限控制
 
 
 ```bash
