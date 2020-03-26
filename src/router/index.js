@@ -44,7 +44,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '主页', icon: 'dashboard' }
     }]
   },
   {
@@ -57,12 +57,19 @@ export const asyncRoutes = [
   {
     path: '/customer',
     component: Layout,
+    meta: { title: '系统管理', icon: 'example', roles: ['admin'] },
     children: [
       {
         path: 'index',
-        component: () => import('@/views/customerList/customerList'),
         name: 'customer',
-        meta: { title: 'customer', icon: 'tab', roles: ['admin'] }
+        component: () => import('@/views/customerList/customerList'),
+        meta: { title: '人员管理', icon: 'eye' }
+      },
+      {
+        path: 'organization',
+        name: 'organization',
+        component: () => import('@/views/customerList/organization'),
+        meta: { title: '组织架构管理', icon: 'table' }
       }
     ]
   },
@@ -153,16 +160,6 @@ export const asyncRoutes = [
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
         meta: { title: 'menu2' }
-      }
-    ]
-  },
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },
