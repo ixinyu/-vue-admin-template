@@ -4,7 +4,21 @@
 
     <breadcrumb class="breadcrumb-container" />
 
-    <div class="right-menu">
+    <div class="right-menu flex a-center">
+      <!-- <el-dropdown class="avatar-container ml20">
+        <div class="avatar-wrapper">
+          <span>选择语言</span>
+          <i class="el-icon-caret-bottom" />
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item @click="switchChinese">简体中文</el-dropdown-item>
+          <el-dropdown-item @click="switchChinese">English</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown> -->
+      <div class="drawer-item flex a-center">
+        <span class="mr10">主题色</span>
+        <theme-picker style="float: right;height: 26px;margin: 0 8px 0 0;" @change="themeChange" />
+      </div>
       <el-dropdown class="avatar-container ml20" trigger="click">
         <div class="avatar-wrapper">
           <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
@@ -27,21 +41,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import ThemePicker from '@/components/ThemePicker'
 
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    ThemePicker
   },
   computed: {
     ...mapGetters([
       'sidebar',
       'avatar',
       'name'
-    ])
+    ]),
+    ...mapState({
+      showSettings: state => state.settings.showSettings
+    })
   },
   methods: {
     toggleSideBar() {
@@ -50,6 +69,18 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    themeChange(val) {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'theme',
+        value: val
+      })
+    },
+    switchChinese() {
+      this.$i18n.locale = 'cn'
+    },
+    switchEnlish() {
+      this.$i18n.locale = 'en'
     }
   }
 }
@@ -87,7 +118,11 @@ export default {
     &:focus {
       outline: none;
     }
-
+    .drawer-item {
+      color: rgba(0, 0, 0, .65);
+      font-size: 14px;
+      height: 100%;
+    }
     .right-menu-item {
       display: inline-block;
       padding: 0 8px;
@@ -111,7 +146,6 @@ export default {
       display: flex;
       align-items: center;
       .avatar-wrapper {
-        margin-top: 5px;
         position: relative;
 
         .user-avatar {

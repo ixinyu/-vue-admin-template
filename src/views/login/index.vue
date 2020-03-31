@@ -1,9 +1,11 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-
+      <div class="flex center">
+        <img src="@/assets/404_images/logo.png" class="logo-pic" alt="">
+      </div>
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">后台管理系统</h3>
       </div>
 
       <el-form-item prop="username">
@@ -41,7 +43,7 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="success" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
         <span> password: any</span>
@@ -175,20 +177,29 @@ $cursor: #fff;
 $bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
-
+$title_color:#6FB92C;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  // background-color: $bg;
+  background: url('../../assets/images/bg.jpg') no-repeat center;
+  background-size: cover;
   overflow: hidden;
 
   .login-form {
     position: relative;
-    width: 520px;
+    width: 420px;
     max-width: 100%;
-    padding: 160px 35px 0;
-    margin: 0 auto;
+    padding: 30px 35px;
+    margin: 120px auto 0;
     overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    .logo-pic{
+      width: 200px;
+      height: 56px;
+      margin: 20px auto;
+    }
   }
 
   .tips {
@@ -215,11 +226,10 @@ $light_gray:#eee;
     position: relative;
 
     .title {
-      font-size: 26px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
+      font-size: 22px;
+      color: $title_color;
+      margin: 0px auto 30px auto;
       text-align: center;
-      font-weight: bold;
     }
   }
 

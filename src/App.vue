@@ -9,8 +9,3 @@ export default {
   name: 'App'
 }
 </script>
-<style>
-#app{
-  font-family: '微软雅黑';
-}
-</style>
