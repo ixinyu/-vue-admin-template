@@ -44,13 +44,22 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '主页', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
   {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
+    path: '/aloneInfo',
+    omponent: Layout,
+    hidden: true,
+    redirect: '/aloneInfo/index',
+    children: [
+      {
+        path: 'index',
+        name: 'aloneInfo',
+        component: () => import('@/views/personInfo/index'),
+        meta: { title: '个人信息' }
+      }
+    ]
   }
 ]
 export const asyncRoutes = [
@@ -60,13 +69,13 @@ export const asyncRoutes = [
     meta: { title: '系统管理', icon: 'example', roles: ['admin'] },
     children: [
       {
-        path: 'index',
+        path: '/customer/index',
         name: 'customer',
         component: () => import('@/views/customerList/customerList'),
         meta: { title: '人员管理', icon: 'eye' }
       },
       {
-        path: 'organization',
+        path: '/customer/organization',
         name: 'organization',
         component: () => import('@/views/customerList/organization'),
         meta: { title: '组织架构管理', icon: 'table' }
@@ -74,10 +83,27 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/userControl',
+    component: Layout,
+    meta: { title: '用户管理', icon: 'example' },
+    children: [
+      {
+        path: '/userControl/index',
+        name: 'useList',
+        component: () => import('@/views/userControl/index'),
+        meta: { title: '用户列表' }
+      },
+      {
+        path: 'useRole',
+        name: 'useList',
+        component: () => import('@/views/userControl/useRole'),
+        meta: { title: '角色管理' }
+      }
+    ]
+  },
+  {
     path: '/example',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
     meta: { title: 'Example', icon: 'example' },
     children: [
       {
@@ -95,71 +121,71 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/form',
+    path: '/hotel',
     component: Layout,
+    meta: { title: '酒店管理', icon: 'example' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form', roles: ['admin'] }
+        path: '/hotel/index',
+        name: 'hotellist',
+        component: () => import('@/views/hotel/index'),
+        meta: { title: '酒店列表', icon: 'table' }
+      },
+      {
+        path: 'hotelSet',
+        name: 'hotelSet',
+        component: () => import('@/views/hotel/hotelSet'),
+        meta: { title: '酒店配置', icon: 'tree' }
+      },
+      {
+        path: 'hotelAdv',
+        name: 'hotelAdv',
+        component: () => import('@/views/hotel/hotelAdv'),
+        meta: { title: '酒店公告', icon: 'tree' }
+      },
+      {
+        path: 'hotelAudit',
+        name: 'hotelAudit',
+        component: () => import('@/views/hotel/hotelAudit'),
+        meta: { title: '待审核酒店列表', icon: 'tree' }
+      },
+      {
+        path: 'hotelComment',
+        name: 'hotelComment',
+        component: () => import('@/views/hotel/hotelComment'),
+        meta: { title: '酒店评论列表', icon: 'tree' }
       }
     ]
   },
   {
-    path: '/nested',
+    path: '/community',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
+    meta: { title: '社区管理', icon: 'example' },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: '/community/index',
+        name: 'communityList',
+        component: () => import('@/views/community/index'),
+        meta: { title: '小区列表', icon: 'table' }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'communitySet',
+        name: 'communitySet',
+        component: () => import('@/views/community/communitySet'),
+        meta: { title: '社区配置', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/dataAnalysis',
+    component: Layout,
+    meta: { title: '数据分析', icon: 'example' },
+    children: [
+      {
+        path: '/dataAnalysis/index',
+        name: 'dataAnalysis',
+        component: () => import('@/views/dataAnalysis/index'),
+        meta: { title: '交易汇总', icon: 'table' }
       }
     ]
   },
