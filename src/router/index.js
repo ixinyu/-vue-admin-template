@@ -45,20 +45,13 @@ export const constantRoutes = [
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
-    }]
-  },
-  {
-    path: '/aloneInfo',
-    omponent: Layout,
-    hidden: true,
-    redirect: '/aloneInfo/index',
-    children: [
-      {
-        path: 'index',
-        name: 'aloneInfo',
-        component: () => import('@/views/personInfo/index'),
-        meta: { title: '个人信息' }
-      }
+    }, {
+      path: 'aloneInfo',
+      name: 'aloneInfo',
+      component: () => import('@/views/personInfo/index'),
+      meta: { title: '个人信息' },
+      hidden: true
+    }
     ]
   }
 ]
@@ -95,7 +88,7 @@ export const asyncRoutes = [
       },
       {
         path: 'useRole',
-        name: 'useList',
+        name: 'useRole',
         component: () => import('@/views/userControl/useRole'),
         meta: { title: '角色管理' }
       }

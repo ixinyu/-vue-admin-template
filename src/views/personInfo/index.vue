@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="ruleForm" :model="ruleForm" status-icon :rules="rules" label-width="100px" class="demo-ruleForm">
+    <el-form ref="ruleForm" :model="ruleForm" status-icon label-width="100px" class="demo-ruleForm">
       <el-form-item label="密码" prop="pass">
         <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
       </el-form-item>

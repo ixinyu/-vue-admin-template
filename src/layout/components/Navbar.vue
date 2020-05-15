@@ -26,11 +26,9 @@
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/aloneInfo">
-            <el-dropdown-item>
-              个人信息
-            </el-dropdown-item>
-          </router-link>
+          <el-dropdown-item divided @click.native="goAlone">
+            <span style="display:block;">个人信息</span>
+          </el-dropdown-item>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
           </el-dropdown-item>
@@ -81,6 +79,9 @@ export default {
     },
     switchEnlish() {
       this.$i18n.locale = 'en'
+    },
+    goAlone() {
+      this.$router.push('/aloneInfo')
     }
   }
 }
