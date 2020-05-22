@@ -2,6 +2,7 @@
 用vue-admin-template 搭建后台系统，
 权限管理，主要同过permission,结合vue-element-admin 观察，一步步的看，即可调出权限控制
 
+基础项目，基础项目
 
 ```bash
 # clone the project
